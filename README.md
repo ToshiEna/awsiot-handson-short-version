@@ -1,0 +1,1 @@
+# awsiot-handson-short-version
