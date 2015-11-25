@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>5. kintoneの設定 &mdash; awsiot-handson-short-version 0.0 ドキュメント</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="awsiot-handson-short-version 0.0 ドキュメント" href="index.html" />
+    <link rel="next" title="6. AWS Lambdaの設定" href="06.html" />
+    <link rel="prev" title="4. Amazon SNSの設定" href="04.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="06.html" title="6. AWS Lambdaの設定"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="04.html" title="4. Amazon SNSの設定"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">awsiot-handson-short-version 0.0 ドキュメント</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="kintone">
+<h1>5. kintoneの設定<a class="headerlink" href="#kintone" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id1">
+<h2>5.1. ユースケース<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>センサーデータのモニタリングのために、AWS IoT Rule, Lambdaを経由で、kintoneにデータをいれます。
+共通のkintoneアカウントを利用して可視化いたします。</p>
+</div>
+<div class="section" id="id2">
+<h2>5.2. 前提条件<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Lambdaからkintoneにデータを挿入するために以下の情報が必要になります。
+今回は、共通のkintoneアカウントを利用するためLambdaも共通のソースを使って実施します。</p>
+<p>以下の情報は、既にソースに埋め込まれております。別途、指定する先からダウンロードしてください。</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="38%" />
+<col width="62%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">項目</th>
+<th class="head">値</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>サブドメイン</td>
+<td><a class="reference external" href="https:/">https:/</a>/{subdomain}.cybozu.com/</td>
+</tr>
+<tr class="row-odd"><td>X-Cybozu-Authorization</td>
+<td>{BASE64-encoded &#8220;id:password&#8221;}</td>
+</tr>
+<tr class="row-even"><td>Authorization</td>
+<td>Basic {BASE64-encoded &#8220;id:password&#8221;}</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>5.3. ログイン<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>別途指定する指定先、アカウントID、パスワードにてログインをしてください。
+ログイン後の画面からkintoneロゴをクリックします。</p>
+<img alt="_images/5-kintone-login.png" src="_images/5-kintone-login.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>IoT Handsonスペースを選択します。</p>
+<img alt="_images/5-kintone-launchapp.png" src="_images/5-kintone-launchapp.png" />
+<img alt="_images/5-kintone-launchapp1.png" src="_images/5-kintone-launchapp1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>iot-dataというリストが表示されることを確認してください。</p>
+<img alt="_images/5-kintone-showlist.png" src="_images/5-kintone-showlist.png" />
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. kintoneの設定</a><ul>
+<li><a class="reference internal" href="#id1">5.1. ユースケース</a></li>
+<li><a class="reference internal" href="#id2">5.2. 前提条件</a></li>
+<li><a class="reference internal" href="#id3">5.3. ログイン</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="04.html"
+                        title="前の章へ">4. Amazon SNSの設定</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="06.html"
+                        title="次の章へ">6. AWS Lambdaの設定</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/05.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="06.html" title="6. AWS Lambdaの設定"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="04.html" title="4. Amazon SNSの設定"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">awsiot-handson-short-version 0.0 ドキュメント</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, aquaviter.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1 で生成しました。
+    </div>
+  </body>
+</html>

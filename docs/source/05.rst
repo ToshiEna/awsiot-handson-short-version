@@ -1,0 +1,48 @@
+=================
+kintoneの設定
+=================
+
+ユースケース
+==============
+センサーデータのモニタリングのために、AWS IoT Rule, Lambdaを経由で、kintoneにデータをいれます。
+共通のkintoneアカウントを利用して可視化いたします。
+
+前提条件
+==============
+Lambdaからkintoneにデータを挿入するために以下の情報が必要になります。
+今回は、共通のkintoneアカウントを利用するためLambdaも共通のソースを使って実施します。
+
+以下の情報は、既にソースに埋め込まれております。別途、指定する先からダウンロードしてください。
+
+======================= ======================================
+項目                     値
+======================= ======================================
+サブドメイン               https://{subdomain}.cybozu.com/
+X-Cybozu-Authorization   {BASE64-encoded "id:password"}
+Authorization            Basic {BASE64-encoded "id:password"}
+======================= ======================================
+
+
+ログイン
+==============
+
+別途指定する指定先、アカウントID、パスワードにてログインをしてください。
+ログイン後の画面からkintoneロゴをクリックします。
+
+.. image:: images/5-kintone-login.png
+
+|           
+
+IoT Handsonスペースを選択します。
+
+.. image:: images/5-kintone-launchapp.png
+.. image:: images/5-kintone-launchapp1.png
+|           
+
+iot-dataというリストが表示されることを確認してください。
+
+
+.. image:: images/5-kintone-showlist.png
+
+
+

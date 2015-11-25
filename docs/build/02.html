@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. ハンズオン準備 &mdash; awsiot-handson-short-version 0.0 ドキュメント</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="awsiot-handson-short-version 0.0 ドキュメント" href="index.html" />
+    <link rel="next" title="3. AWS IoT基本設定" href="03.html" />
+    <link rel="prev" title="1. イントロダクション" href="01.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             accesskey="I">索引</a></li>
+        <li class="right" >
+          <a href="03.html" title="3. AWS IoT基本設定"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="01.html" title="1. イントロダクション"
+             accesskey="P">前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">awsiot-handson-short-version 0.0 ドキュメント</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="id1">
+<h1>2. ハンズオン準備<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>ハンズオンを始めるにあたり、事前の準備設定を行います。</p>
+<div class="section" id="cloudformation">
+<h2>2.1. ハンズオン用CloudFormationのスタック作成<a class="headerlink" href="#cloudformation" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ハンズオンで利用するIAMユーザを作成を自動化するために、CloudFormationのスタックを作成します。IAMユーザはデバイスの証明書を作成するための権限を与えるために作成します。
+今回のハンズオンでは、セントラルゲートウェイ側でAWS IoTへの処理を行うため、スタッフ側で証明書生成の実行を行います。スタッフが代わりに実行するためスタッフに作成したIAMユーザのAPI Keyを
+渡してください。本ユーザは、必ず、ハンズオン終了後に削除してください。
+作成されるユーザは、署名要求ができる権限のみ付与しております。</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>マネージメントコンソールのサービス一覧から&#8221;Cloud Formation&#8221;をクリックします。</p>
+<img alt="_images/2-cf-1.png" src="_images/2-cf-1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>&#8220;Choose a template&#8221;から&#8221;Specify an Amazon S3 template URL&#8221;にチェックを入れ、以下のパスを入力し、[Next]をクリックします。</p>
+<p><a class="reference external" href="http://toshiake-iot-handson.s3.amazonaws.com/AWSIoT/cf/awsiothandson.template">http://toshiake-iot-handson.s3.amazonaws.com/AWSIoT/cf/awsiothandson.template</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="_images/2-cf-2.png" src="_images/2-cf-2.png" />
+<p>&#8220;Stack Name&#8221;に&#8221;AWSIoTHandsonStack&#8221;と入力し、[Next]をクリックします。</p>
+<img alt="_images/2-cf-3.png" src="_images/2-cf-3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>&#8220;Options&#8221;で何も入力せずに[Next]をクリックします。</p>
+<img alt="_images/2-cf-4.png" src="_images/2-cf-4.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>&#8220;Resource&#8221;の画面を下にスクロールし、&#8221;Capabilities&#8221;で&#8221;I acknowledge that this template...&#8221;にチェックを入れ、[Create]をクリックします。</p>
+<img alt="_images/2-cf-5.png" src="_images/2-cf-5.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Cloud Formationのスタックの一覧に作成したスタックが表示されるのを確認します。Statusは&#8221;CREATE_IN_PROGRESS&#8221;から&#8221;CREATE_COMPLETE&#8221;になるのを確認します。</p>
+<img alt="_images/2-cf-6.png" src="_images/2-cf-6.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<img alt="_images/2-cf-7.png" src="_images/2-cf-7.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>画面下の&#8221;Output&#8221;タブをクリックし、AccessKeyとSecretKeyが表示されていることを確認し、こちらの内容をスタッフの支持に従って渡してください。</p>
+<img alt="_images/2-cf-8.png" src="_images/2-cf-8.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>2.2. 【スタッフ用】サンプルコードの準備<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>証明書を取得するためのスクリプトの設定を行います。入力して頂いたフォーム先のスプレッドシートからCSVをダウンロードし、実行フォルダにuser-list.csvの名前で保存します。
+入力されたデータに誤りがないかを確認して、create_cert.jsを実行します。
+(注意)
+証明書作成のスクリプトを実行します。certsディレクトリにプライベートキー(private.pem)とCSR(cert.csr)がある前提です。
+なければ、作成してください。CSRの内容を元に証明書を作成しています。</p>
+<div class="highlight-python"><div class="highlight"><pre>root:~# cd {実行フォルダ}
+root:~# node create_cert.js
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>デバイス保有者に証明書が作成されているのを確認してもらいます。もし、今回の証明書がわからない場合は、出力されるcertificateIdの英数字文字列をデバイス保有者に渡してください。</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>証明書ファイルが各デバイス毎に作成していることを確認します。</p>
+<div class="highlight-python"><div class="highlight"><pre>root@edison:~/{実行フォルダ}/certs# ls
+cert.csr     dev01.pem    dev02.pem    dev03.pem    dev04.pem    dev05.pem    private.pem  root.pem
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. ハンズオン準備</a><ul>
+<li><a class="reference internal" href="#cloudformation">2.1. ハンズオン用CloudFormationのスタック作成</a></li>
+<li><a class="reference internal" href="#id2">2.2. 【スタッフ用】サンプルコードの準備</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>前のトピックへ</h4>
+  <p class="topless"><a href="01.html"
+                        title="前の章へ">1. イントロダクション</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="03.html"
+                        title="次の章へ">3. AWS IoT基本設定</a></p>
+  <div role="note" aria-label="source link">
+    <h3>このページ</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/02.txt"
+            rel="nofollow">ソースコードを表示</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>クイック検索</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="検索" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    モジュール、クラス、または関数名を入力してください
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>ナビゲーション</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="総合索引"
+             >索引</a></li>
+        <li class="right" >
+          <a href="03.html" title="3. AWS IoT基本設定"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="01.html" title="1. イントロダクション"
+             >前へ</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">awsiot-handson-short-version 0.0 ドキュメント</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, aquaviter.
+      このドキュメントは <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1 で生成しました。
+    </div>
+  </body>
+</html>

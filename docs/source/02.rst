@@ -1,0 +1,94 @@
+================
+ ハンズオン準備
+================
+
+ハンズオンを始めるにあたり、事前の準備設定を行います。
+
+ハンズオン用CloudFormationのスタック作成
+========================================
+
+ハンズオンで利用するIAMユーザを作成を自動化するために、CloudFormationのスタックを作成します。IAMユーザはデバイスの証明書を作成するための権限を与えるために作成します。
+今回のハンズオンでは、セントラルゲートウェイ側でAWS IoTへの処理を行うため、スタッフ側で証明書生成の実行を行います。スタッフが代わりに実行するためスタッフに作成したIAMユーザのAPI Keyを
+渡してください。本ユーザは、必ず、ハンズオン終了後に削除してください。
+作成されるユーザは、署名要求ができる権限のみ付与しております。
+
+|
+
+マネージメントコンソールのサービス一覧から"Cloud Formation"をクリックします。
+
+.. image:: images/2-cf-1.png
+
+|
+
+"Choose a template"から"Specify an Amazon S3 template URL"にチェックを入れ、以下のパスを入力し、[Next]をクリックします。
+
+http://toshiake-iot-handson.s3.amazonaws.com/AWSIoT/cf/awsiothandson.template
+
+|
+
+.. image:: images/2-cf-2.png
+
+"Stack Name"に"AWSIoTHandsonStack"と入力し、[Next]をクリックします。
+
+.. image:: images/2-cf-3.png
+
+|
+
+"Options"で何も入力せずに[Next]をクリックします。
+
+.. image:: images/2-cf-4.png
+
+|
+
+"Resource"の画面を下にスクロールし、"Capabilities"で"I acknowledge that this template..."にチェックを入れ、[Create]をクリックします。
+
+.. image:: images/2-cf-5.png
+
+|
+
+Cloud Formationのスタックの一覧に作成したスタックが表示されるのを確認します。Statusは"CREATE_IN_PROGRESS"から"CREATE_COMPLETE"になるのを確認します。
+
+.. image:: images/2-cf-6.png
+
+|           
+
+.. image:: images/2-cf-7.png
+
+|
+
+画面下の"Output"タブをクリックし、AccessKeyとSecretKeyが表示されていることを確認し、こちらの内容をスタッフの支持に従って渡してください。
+
+.. image:: images/2-cf-8.png
+
+|
+
+【スタッフ用】サンプルコードの準備
+============================
+
+証明書を取得するためのスクリプトの設定を行います。入力して頂いたフォーム先のスプレッドシートからCSVをダウンロードし、実行フォルダにuser-list.csvの名前で保存します。
+入力されたデータに誤りがないかを確認して、create_cert.jsを実行します。
+(注意)
+証明書作成のスクリプトを実行します。certsディレクトリにプライベートキー(private.pem)とCSR(cert.csr)がある前提です。
+なければ、作成してください。CSRの内容を元に証明書を作成しています。
+
+::
+   
+   root:~# cd {実行フォルダ}
+   root:~# node create_cert.js
+
+|
+
+デバイス保有者に証明書が作成されているのを確認してもらいます。もし、今回の証明書がわからない場合は、出力されるcertificateIdの英数字文字列をデバイス保有者に渡してください。
+
+ 
+|
+
+証明書ファイルが各デバイス毎に作成していることを確認します。
+
+   
+::
+
+   root@edison:~/{実行フォルダ}/certs# ls
+   cert.csr     dev01.pem    dev02.pem    dev03.pem    dev04.pem    dev05.pem    private.pem  root.pem
+
+   
