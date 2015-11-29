@@ -12,6 +12,7 @@ while read LINE; do
             if [ `echo "${DEVNAME}" | grep "${DEV}"` ] ; then
                 echo "${BLE}"
                 node gateway.js "${DEVNAME}" "${BLE}" >> gateway.log&
+                echo $! > ${DEVNAME}.pid
             fi
         done < sensor-master.txt
     fi
