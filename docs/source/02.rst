@@ -56,11 +56,15 @@ Cloud Formationのスタックの一覧に作成したスタックが表示さ�
 
 |
 
-画面下の"Output"タブをクリックし、AccessKeyとSecretKeyが表示されていることを確認し、こちらの内容をスタッフの支持に従って渡してください。
+画面下の"Output"タブをクリックし、AccessKeyとSecretKeyが表示されていることを確認し、こちらの内容を以下のフォームに入力してください。
+http://goo.gl/forms/BZV7fB6oh0
+
 
 .. image:: images/2-cf-8.png
 
 |
+
+
 
 【スタッフ用】サンプルコードの準備
 ============================
