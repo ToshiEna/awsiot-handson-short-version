@@ -1,5 +1,5 @@
 =============================
- AWS IoT & kintone ハンズオン ~基本編~
+ AWS IoT ハンズオン ~ショートバージョン~
 =============================
 
 .. toctree::
@@ -42,9 +42,9 @@
 サンプルプログラム
 ==================
 
-本ハンズオンで利用するサンプルプログラムです。
+本ハンズオンで利用するサンプルプロジェクトは以下にあります。
 
-https://github.com/ToshiEna/****
+https://github.com/ToshiEna/awsiot-handson-short-version
 
 
 
@@ -58,6 +58,4 @@ https://github.com/ToshiEna/****
 ========
 
 
-ハッシュタグ
-============
-Twitterのハッシュタグはこちらになります。 **#AWS_IoT_JP**
+

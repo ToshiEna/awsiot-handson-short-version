@@ -98,10 +98,6 @@ SNS Home画面の中から"Create Topic"を選択します。
 Topic名を入力する画面がポップアップされるので、両方の入力欄に"IoTHandson"を入力してください。
 入力後、"Create topic"ボタンをクリックしてください。
 
-.. image:: images/4-sns-create-topic.png
-
-|           
-
 
 .. image:: images/4-sns-create-topic-2.png
 
@@ -175,16 +171,25 @@ Name          iot_handson_sns
 Description   IoT Handson SNS
 Attribute     * (アスタリスク)
 Topic Filter  {ご自身のデバイスID}/ginga
-Condition     sensor = "temp" AND value > 25
+Condition     value > 25
 ============= ============================
+
+セントラルからPublishされるメッセージは以下のフォーマットになります。  
+(例)  
+
+{"device":"dev01","sensor":"humid","timestamp":"2015-11-23T11:54:06.518Z","value":1.75}  
+{"device":"dev01","sensor":"temp","timestamp":"2015-11-23T11:54:06.523Z","value":19.69}  
+
+
 
 Choose an actionでSNSを選択します。
 
 SNS Targetを選択する項目が表示されるので、先ほど作成した、SNS Topic"IoTHandson"を選択します。
 選択後、Roleを指定する項目が表示されますので、これも先ほど作成した、ロール"iot_hands_on"を選択します。
 
-この状態で、"Add Action"をクリックします。
-(注意) 以下ののConditionは実際に指定する内容と異なっております。上記のパラメータを入力してください。
+この状態で、"Add Action"をクリックします。  
+** (注意) 以下ののConditionは実際に指定する内容と異なっております。上記のパラメータを入力してください。 **  
+
 
 .. image:: images/4-iot-create-rule.png
 
