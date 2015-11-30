@@ -52,8 +52,35 @@
             
   <div class="section" id="id1">
 <h1>7. その他の設定（オプション）<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="ginga-ble">
+<h2>7.1. GINGA BLE ペリフェラルについて<a class="headerlink" href="#ginga-ble" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ペリフェラルには、温度センサー、湿度センサー、加速度センサーが実装されてます。
+今回のハンズオンでは、温度センサーと湿度センサーを定期的（10秒間隔）にアップロードされます。</p>
+<p><strong>動作方法</strong></p>
+<blockquote>
+<div>電池を入れて(1つでもOK)、電池ソケットと反対側に小さなスライドスイッチがあり、スイッチをON(シルクされていない方)にすると動作開始します。
+センサデータは、BLEからNotificationで通知されます。BLEセントラルから接続後、NotificationをEnableにすると、データが、約10秒間隔で取得できます。</div></blockquote>
+<p><strong>データフォーマット</strong></p>
+<blockquote>
+<div>0x00 TEMP[15:8] <a href="#id2"><span class="problematic" id="id3">*</span></a>1
+0x01 TEMP[7:0] <a href="#id4"><span class="problematic" id="id5">*</span></a>1
+0x02 HUM[15:8] <a href="#id6"><span class="problematic" id="id7">*</span></a>1
+0x03 HUM[7:0] <a href="#id8"><span class="problematic" id="id9">*</span></a>1
+0x04 ILLUMI_OUT[7:0]
+0x05 ACCEL_X_OUT[15:8] 加速度x軸
+0x06 ACCEL_X_OUT[7:0]
+0x07 ACCEL_Y_OUT[15:8] 加速度y軸
+0x08 ACCEL_Y_OUT[7:0]
+0x09 ACCEL_Z_OUT[15:8] 加速度z軸
+0x0a ACCEL_Z_OUT[7:0]
+0x0b TOBJ_OUT[15:8] 赤外線温度 16bitのdouble
+0x0c TOBJ_OUT[7:0]
+0x0d PERI_ID[7:0] <a href="#id10"><span class="problematic" id="id11">*</span></a>2</div></blockquote>
+<p><a href="#id12"><span class="problematic" id="id13">*</span></a>1 TEMP(温度[摂氏])とHUM(湿度[%])は 整数部(上位バイト)と少数部(下位バイト)に分かれています
+<a href="#id14"><span class="problematic" id="id15">*</span></a>2 16bitのdouble <a href="#id16"><span class="problematic" id="id17">*</span></a>peripheral ID</p>
+</div>
 <div class="section" id="cloudwatch-logs">
-<h2>7.1. CloudWatch Logsの設定<a class="headerlink" href="#cloudwatch-logs" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>7.2. CloudWatch Logsの設定<a class="headerlink" href="#cloudwatch-logs" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>AWS IoTのログはCloudWatch Logsで取得可能です。
 詳細な手順はこちらに掲載されています。</p>
 <p><a class="reference external" href="http://docs.aws.amazon.com/ja_jp/iot/latest/developerguide/cloud-watch-logs.html">http://docs.aws.amazon.com/ja_jp/iot/latest/developerguide/cloud-watch-logs.html</a></p>
@@ -87,8 +114,8 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="id2">
-<h2>7.2. 証明書の作成<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<div class="section" id="id18">
+<h2>7.3. 証明書の作成<a class="headerlink" href="#id18" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>本ハンズオンではあらかじめプライベートキーとCSR(Certificate Signing Request)を作成し、そちらを元に証明書を取得しています。プライベート鍵とCSRを作成する手順は以下のとおりです。</p>
 <p>以下のopensslコマンドでプライベートキーを作成します。</p>
 <div class="highlight-python"><div class="highlight"><pre>$ openssl genrsa -out privatekey.pem 2048
@@ -132,8 +159,9 @@ An optional company name []:
   <h3><a href="index.html">目次</a></h3>
   <ul>
 <li><a class="reference internal" href="#">7. その他の設定（オプション）</a><ul>
-<li><a class="reference internal" href="#cloudwatch-logs">7.1. CloudWatch Logsの設定</a></li>
-<li><a class="reference internal" href="#id2">7.2. 証明書の作成</a></li>
+<li><a class="reference internal" href="#ginga-ble">7.1. GINGA BLE ペリフェラルについて</a></li>
+<li><a class="reference internal" href="#cloudwatch-logs">7.2. CloudWatch Logsの設定</a></li>
+<li><a class="reference internal" href="#id18">7.3. 証明書の作成</a></li>
 </ul>
 </li>
 </ul>

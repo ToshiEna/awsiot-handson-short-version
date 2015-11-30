@@ -54,8 +54,7 @@
 <h1>6. AWS Lambdaの設定<a class="headerlink" href="#aws-lambda" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="id1">
 <h2>6.1. コードのダウンロード<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>以下のサイトからコードをダウンロードします。</p>
-<p><a class="reference external" href="http://toshiake-iot-handson.s3.amazonaws.com/AWSIoT/lambda/index.zip">http://toshiake-iot-handson.s3.amazonaws.com/AWSIoT/lambda/index.zip</a></p>
+<p>ダウンロード先は別途ご案内いたします。</p>
 <p>今回は、コードの修正は必要なのでそのままLambdaに登録できます。
 コードのサンプルは以下のとおりです。</p>
 <div class="highlight-javascript"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -173,7 +172,8 @@ RoleのリストからBasic execution roleを選択します。</p>
 <div class="section" id="aws-iot">
 <h2>6.3. AWS IoTのルール設定<a class="headerlink" href="#aws-iot" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>Lambdaの登録が終わったので、先ほどのSNSと同様の手段で、Lambdaを設定します。
-手順は、SNSとほぼ同等で、Lambdaを選択する部分のみことなります。</p>
+手順は、SNSとほぼ同等で、Lambdaを選択する部分のみことなります。
+** (注意) 以下の画像とConditionは異なります。**</p>
 <img alt="_images/6-iot-lambda-rule.png" src="_images/6-iot-lambda-rule.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -181,6 +181,11 @@ RoleのリストからBasic execution roleを選択します。</p>
 <p>これで準備は整いました。
 SNSの時と同様10秒単位でセンサーデータがAWS IoTにPublishされてます。
 設定がうまく行っていれば、kintoneの障害対応アプリ内にデータが蓄積されます。</p>
+</div>
+<div class="section" id="kintone">
+<h2>6.4. kintoneのアプリで確認<a class="headerlink" href="#kintone" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>5章でアクセスしたアプリ内で自分のデバイスIDのログが入力されているか確認します。
+参加者皆さんのデータが蓄積されますので、適宜フィルターなどをかけて見てください。</p>
 </div>
 </div>
 
@@ -196,6 +201,7 @@ SNSの時と同様10秒単位でセンサーデータがAWS IoTにPublishされ�
 <li><a class="reference internal" href="#id1">6.1. コードのダウンロード</a></li>
 <li><a class="reference internal" href="#id2">6.2. AWS Lambdaの設定</a></li>
 <li><a class="reference internal" href="#aws-iot">6.3. AWS IoTのルール設定</a></li>
+<li><a class="reference internal" href="#kintone">6.4. kintoneのアプリで確認</a></li>
 </ul>
 </li>
 </ul>

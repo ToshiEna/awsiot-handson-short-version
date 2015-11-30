@@ -130,10 +130,6 @@
 </div>
 <p>Topic名を入力する画面がポップアップされるので、両方の入力欄に&#8221;IoTHandson&#8221;を入力してください。
 入力後、&#8221;Create topic&#8221;ボタンをクリックしてください。</p>
-<img alt="_images/4-sns-create-topic.png" src="_images/4-sns-create-topic.png" />
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
 <img alt="_images/4-sns-create-topic-2.png" src="_images/4-sns-create-topic-2.png" />
 <div class="line-block">
 <div class="line"><br /></div>
@@ -187,8 +183,8 @@ AWS IoTのコンソール画面に遷移し、&#8221;create a resource&#8221;を
 <p>ルール作成画面が表示されますので、各項目に必要事項を入力または選択します。</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="30%" />
-<col width="70%" />
+<col width="32%" />
+<col width="68%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">項目</th>
@@ -212,15 +208,19 @@ AWS IoTのコンソール画面に遷移し、&#8221;create a resource&#8221;を
 <td>{ご自身のデバイスID}/ginga</td>
 </tr>
 <tr class="row-even"><td>Condition</td>
-<td>sensor = &#8220;temp&#8221; AND value &gt; 25</td>
+<td>value &gt; 25</td>
 </tr>
 </tbody>
 </table>
+<p>セントラルからPublishされるメッセージは以下のフォーマットになります。
+(例)</p>
+<p>{&#8220;device&#8221;:&#8221;dev01&#8221;,&#8221;sensor&#8221;:&#8221;humid&#8221;,&#8221;timestamp&#8221;:&#8221;2015-11-23T11:54:06.518Z&#8221;,&#8221;value&#8221;:1.75}
+{&#8220;device&#8221;:&#8221;dev01&#8221;,&#8221;sensor&#8221;:&#8221;temp&#8221;,&#8221;timestamp&#8221;:&#8221;2015-11-23T11:54:06.523Z&#8221;,&#8221;value&#8221;:19.69}</p>
 <p>Choose an actionでSNSを選択します。</p>
 <p>SNS Targetを選択する項目が表示されるので、先ほど作成した、SNS Topic&#8221;IoTHandson&#8221;を選択します。
 選択後、Roleを指定する項目が表示されますので、これも先ほど作成した、ロール&#8221;iot_hands_on&#8221;を選択します。</p>
 <p>この状態で、&#8221;Add Action&#8221;をクリックします。
-(注意) 以下ののConditionは実際に指定する内容と異なっております。上記のパラメータを入力してください。</p>
+** (注意) 以下ののConditionは実際に指定する内容と異なっております。上記のパラメータを入力してください。 **</p>
 <img alt="_images/4-iot-create-rule.png" src="_images/4-iot-create-rule.png" />
 <div class="line-block">
 <div class="line"><br /></div>
