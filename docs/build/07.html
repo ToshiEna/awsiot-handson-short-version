@@ -54,30 +54,32 @@
 <h1>7. その他の設定（オプション）<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
 <div class="section" id="ginga-ble">
 <h2>7.1. GINGA BLE ペリフェラルについて<a class="headerlink" href="#ginga-ble" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>ペリフェラルには、温度センサー、湿度センサー、加速度センサーが実装されてます。
-今回のハンズオンでは、温度センサーと湿度センサーを定期的（10秒間隔）にアップロードされます。</p>
+<p>ペリフェラルには、温度センサー、湿度センサー、加速度センサーが実装されてます。</p>
+<p>今回のハンズオンでは、温度センサーと湿度センサーを定期的（10秒間隔）にアップロードされます。</p>
 <p><strong>動作方法</strong></p>
 <blockquote>
-<div>電池を入れて(1つでもOK)、電池ソケットと反対側に小さなスライドスイッチがあり、スイッチをON(シルクされていない方)にすると動作開始します。
-センサデータは、BLEからNotificationで通知されます。BLEセントラルから接続後、NotificationをEnableにすると、データが、約10秒間隔で取得できます。</div></blockquote>
+<div><p>電池を入れて(1つでもOK)、電池ソケットと反対側に小さなスライドスイッチがあり、スイッチをON(シルクされていない方)にすると動作開始します。</p>
+<p>センサデータは、BLEからNotificationで通知されます。BLEセントラルから接続後、NotificationをEnableにすると、データが、約10秒間隔で取得できます。</p>
+</div></blockquote>
 <p><strong>データフォーマット</strong></p>
 <blockquote>
-<div>0x00 TEMP[15:8] <a href="#id2"><span class="problematic" id="id3">*</span></a>1
-0x01 TEMP[7:0] <a href="#id4"><span class="problematic" id="id5">*</span></a>1
-0x02 HUM[15:8] <a href="#id6"><span class="problematic" id="id7">*</span></a>1
-0x03 HUM[7:0] <a href="#id8"><span class="problematic" id="id9">*</span></a>1
-0x04 ILLUMI_OUT[7:0]
-0x05 ACCEL_X_OUT[15:8] 加速度x軸
-0x06 ACCEL_X_OUT[7:0]
-0x07 ACCEL_Y_OUT[15:8] 加速度y軸
-0x08 ACCEL_Y_OUT[7:0]
-0x09 ACCEL_Z_OUT[15:8] 加速度z軸
-0x0a ACCEL_Z_OUT[7:0]
-0x0b TOBJ_OUT[15:8] 赤外線温度 16bitのdouble
-0x0c TOBJ_OUT[7:0]
-0x0d PERI_ID[7:0] <a href="#id10"><span class="problematic" id="id11">*</span></a>2</div></blockquote>
-<p><a href="#id12"><span class="problematic" id="id13">*</span></a>1 TEMP(温度[摂氏])とHUM(湿度[%])は 整数部(上位バイト)と少数部(下位バイト)に分かれています
-<a href="#id14"><span class="problematic" id="id15">*</span></a>2 16bitのdouble <a href="#id16"><span class="problematic" id="id17">*</span></a>peripheral ID</p>
+<div><p>0x00 TEMP[15:8] <a href="#id2"><span class="problematic" id="id3">*</span></a>1</p>
+<p>0x01 TEMP[7:0] <a href="#id4"><span class="problematic" id="id5">*</span></a>1</p>
+<p>0x02 HUM[15:8] <a href="#id6"><span class="problematic" id="id7">*</span></a>1</p>
+<p>0x03 HUM[7:0] <a href="#id8"><span class="problematic" id="id9">*</span></a>1</p>
+<p>0x04 ILLUMI_OUT[7:0]</p>
+<p>0x05 ACCEL_X_OUT[15:8] 加速度x軸</p>
+<p>0x06 ACCEL_X_OUT[7:0]</p>
+<p>0x07 ACCEL_Y_OUT[15:8] 加速度y軸</p>
+<p>0x08 ACCEL_Y_OUT[7:0]</p>
+<p>0x09 ACCEL_Z_OUT[15:8] 加速度z軸</p>
+<p>0x0a ACCEL_Z_OUT[7:0]</p>
+<p>0x0b TOBJ_OUT[15:8] 赤外線温度 16bitのdouble</p>
+<p>0x0c TOBJ_OUT[7:0]</p>
+<p>0x0d PERI_ID[7:0] <a href="#id10"><span class="problematic" id="id11">*</span></a>2</p>
+</div></blockquote>
+<p><a href="#id12"><span class="problematic" id="id13">*</span></a>1 TEMP(温度[摂氏])とHUM(湿度[%])は 整数部(上位バイト)と少数部(下位バイト)に分かれています</p>
+<p><a href="#id14"><span class="problematic" id="id15">*</span></a>2 16bitのdouble <a href="#id16"><span class="problematic" id="id17">*</span></a>peripheral ID</p>
 </div>
 <div class="section" id="cloudwatch-logs">
 <h2>7.2. CloudWatch Logsの設定<a class="headerlink" href="#cloudwatch-logs" title="このヘッドラインへのパーマリンク">¶</a></h2>
